@@ -1,72 +1,94 @@
-# Fake Currency Detection Project
+# Fake Banknote Detection Project
+
 ## Table of Contents
 
- - [Project Description ](#project-description).
- - [Project Structure ](#project-structure)
- - [Dataset](#dataset)
- - [Tools and Libraries](#tools-and-libraries)
- - [Data Cleaning/Preparation](#data-cleaningpreparation)
- - [Analysis Methodologie](#analysis-methodologie)
-   - [Hierarchical Clustering](#hierarchical-clustering)
-   - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
-   
- - [Key Results/Findings](#key-resultsfindings)
- - [Recommendations](#recommendations)
+- [Project Description](#project-description)
+- [Project Structure](#project-structure)
+- [Dataset](#dataset)
+- [Tools and Libraries](#tools-and-libraries)
+- [Data Cleaning/Preparation](#data-cleaningpreparation)
+- [Analysis Methodology](#analysis-methodology)
+  -[Principal Component Analysis (PCA)](#principal-component-analysis-pca)
+  - [K-Means Clustering](#k-means-clustering)
+  - [K-Nearest Neighbors (KNN)](#k-nearest-neighbors-knn)
+  - [Logistic Regression](#logistic-regression)
+- [Key Results/Findings](#key-resultsfindings)
+- [Recommendations](#recommendations)
+
 ## Project Description
-This project aims to develop an algorithm for detecting counterfeit banknotes using statistical and machine learning techniques. Given a dataset containing the geometric characteristics of banknotes, we analyze the data and apply clustering, dimensionality reduction, and classification methods to build an effective detection model.
+
+This project aims to develop an algorithm to detect counterfeit banknotes using machine learning techniques. The dataset consists of geometric features of banknotes, and the goal is to classify them as genuine or counterfeit.
 
 ## Project Structure
-- `data/` - Contains the dataset used for analysis.
-- `notebooks/` - Jupyter notebooks with data exploration, preprocessing, and modeling.
-- `src/` - Python scripts for preprocessing, modeling, and evaluation.
-- `reports/` - Documentation and summary reports.
-- `README.md` - Overview of the project.
+
+- `data/` - Contains raw and processed data.
+- [notebooks](./notebooks): contains the jupyter notebook used in the analysis:
+- `src/` - Source code for data processing and modeling.
+- `results/` - Saved models and evaluation results.
+- `README.md` - Project documentation.
 
 ## Dataset
-The dataset consists of several geometric features of banknotes, including:
-- Length of the bill (mm)
-- Height of the bill (left and right, mm)
-- Top and bottom margin width (mm)
-- Diagonal length (mm)
-- A label indicating whether the bill is real or fake
+
+The dataset contains the following features:
+- length: Length of the banknote (mm)
+- height_left: Height (left side) (mm)
+- height_right: Height (right side) (mm)
+- margin_up: Upper margin (mm)
+- margin_low: Lower margin (mm)
+- diagonal: Diagonal length (mm)
+- is_genuine: Genuine (1) or Counterfeit (0)
 
 ## Tools and Libraries
-The project utilizes the following tools and libraries:
-- **Python**: Programming language for analysis and modeling.
-- **Pandas & NumPy**: Data manipulation and numerical operations.
-- **Matplotlib & Seaborn**: Data visualization.
-- **Scikit-learn**: Machine learning models and evaluation.
-- **SciPy**: Statistical analysis and clustering.
+
+- Python
+- Pandas, NumPy (Data Processing)
+- Scikit-learn (Machine Learning Models)
+- Matplotlib, Seaborn (Visualization)
 
 ## Data Cleaning/Preparation
-Before analysis, the dataset undergoes several preprocessing steps:
-- Handling missing values (if any)
-- Standardizing the numerical features
-- Identifying and removing outliers
-- Splitting data into training and testing sets
+
+- Handled missing values
+- Standardized numerical features
+- Split data into training and test sets
 
 ## Analysis Methodology
-### Hierarchical Clustering
-Hierarchical clustering is applied to identify natural groupings within the dataset before labeling. The clustering dendrogram helps visualize potential separations between real and fake banknotes.
 
 ### Principal Component Analysis (PCA)
-PCA is used to reduce dimensionality while preserving as much variance as possible. The steps include:
-- Eigenvalue scree plot analysis to determine the number of components
-- Visualizing correlation between variables
-- Projection of data onto principal components
+
+PCA reduced the dataset to two main components, explaining 69.4% of the variance.
+
+The height_left, height_right, margin_low and length variables are represented by F1.
+The diagonal variable is represented by F2.
+The margin_up variable is not well represented by either F1 or F2.
+
+### K-Means Clustering
+- Used for exploratory data analysis.
+- Clustered banknotes into groups based on geometric features: the optimal number of clusters is 3.
+- The groups formed by the kmeans algorithm are not suited to our problem.
+
+### K-Nearest Neighbors (KNN)
+- Used as a classification model.
+- Trained and tested the model on labeled data (80% of the data is used to train the model and the rest to evaluate its performance).
+- Evaluated accuracy ( accuracy_KNN_test:94.11%, accuracy_KNN_entrainement: 100% ), precision, and recall.
+
+### Logistic Regression
+- Used as a predictive model.
+- Estimated the probability of a banknote being genuine.
+- Decision threshold set at 0.5 for classification.
+- accuracy_KNN_test:98.52%, accuracy_KNN_entrainement: 100% 
 
 ## Key Results/Findings
-- PCA reveals that most variance in the data can be captured by a few principal components, enabling efficient dimensionality reduction.
-- Clustering techniques show a clear distinction between real and fake banknotes based on geometric properties.
-- A logistic regression classifier trained on PCA-transformed data achieves high accuracy in detecting counterfeit bills.
+
+- Logistic Regression provided a high accuracy in detecting fake banknotes.
+- KNN performed well but was sensitive to parameter tuning.
+- K-Means clustering showed patterns but was not effective for final classification.
 
 ## Recommendations
-- Further improvements can be achieved by testing more advanced classification models such as Random Forest or Neural Networks.
-- Incorporating additional features such as texture or ink analysis could enhance detection accuracy.
-- Deploying the model into a real-time application for use in financial institutions or security agencies.
 
+- Improve model accuracy with feature engineering.
+- Experiment with other classification models such as Decision Trees or Random Forests.
+- Deploy the model for real-time banknote verification.
 
-
-
-
+---
+This project demonstrates how machine learning techniques can be applied to fraud detection. Future work includes improving feature selection and exploring deep learning methods. 🚀
 
