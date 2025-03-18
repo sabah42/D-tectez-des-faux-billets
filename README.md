@@ -1,5 +1,17 @@
 # Fake Currency Detection Project
+## Table of Contents
 
+ - [Project Description ](#project-description).
+ - [Project Structure ](#project-structure)
+ - [Dataset](#dataset)
+ - [Tools and Libraries](#tools-and-libraries)
+ - [Data Cleaning/Preparation](#data-cleaningpreparation)
+ - [Analysis Methodologie](#analysis-methodologie)
+   - [Hierarchical Clustering](#hierarchical-clustering)
+   - [Principal Component Analysis (PCA)](#principal-component-analysis-pca)
+   
+ - [Key Results/Findings](#key-resultsfindings)
+ - [Recommendations](#recommendations)
 ## Project Description
 This project aims to develop an algorithm for detecting counterfeit banknotes using statistical and machine learning techniques. Given a dataset containing the geometric characteristics of banknotes, we analyze the data and apply clustering, dimensionality reduction, and classification methods to build an effective detection model.
 
