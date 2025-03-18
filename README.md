@@ -21,10 +21,9 @@ This project aims to develop an algorithm to detect counterfeit banknotes using 
 
 ## Project Structure
 
-- `data/` - Contains raw and processed data.
-- [notebooks](./notebooks): contains the jupyter notebook used in the analysis:
-- `src/` - Source code for data processing and modeling.
-- `results/` - Saved models and evaluation results.
+- [data](./data) : Contains raw and processed data.
+- [notebooks](./notebooks): contains the jupyter notebook used in the analysis.
+- [visualizations](./visualizations): Contains graphical.
 - `README.md` - Project documentation.
 
 ## Dataset
