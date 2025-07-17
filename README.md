@@ -24,6 +24,7 @@ This project aims to develop an algorithm to detect counterfeit banknotes using 
 - [data](./data) : Contains raw and processed data.
 - [notebooks](./notebooks): contains the jupyter notebook used in the analysis.
 - [visualizations](./visualizations): Contains graphical.
+- [Presentation](./Presentation): The PowerPoint file used during the final presentation of the project.
 - `README.md` - Project documentation.
 
 ## Dataset
